@@ -1,0 +1,33 @@
+<app-add-todo (addTodoEmitter)="addTodoEvt($event)"></app-add-todo>
+
+
+<div *ngIf="this.todos.length===0; else elseBlock" class="container-fluid p-1 mb-1 mt-5 bg-secondary text-white" id="YourTodosHead">
+    <h3>No Todos to display</h3>
+    <p style="color: greenyellow;">Add Your Todos to the list</p>
+</div>
+
+<ng-template #elseBlock>
+    <div class="text-center"><button type="reset" class="btn btn-warning text-center remove"
+            (click)="removeAllTodos($event)">Remove All Todo's</button></div>
+    <div class="form-outline container-fluid queryTxt">
+        <input type="search" id="query" [(ngModel)]="query" name="query" class="form-control"
+            placeholder="Type to Search a Todo" aria-label="Search" />
+    </div>
+    <div class="container-fluid p-1 mb-1 bg-success text-white" id="YourTodosHead">
+        <h3>Your Todos are :</h3>
+    </div>
+
+    <!-- <div class="card-group"> -->
+    <div class="container todos-Container">
+        <div class="row row-cols-1 row-cols-md-3">
+
+            <!-- <div class="card-group"> -->
+            <div class="col mb-4" *ngFor="let todo of (todos | searchTodo:query);index as i;">
+                <div class="card">
+                    <app-todo-item [todo]="todo" (deleteTodoEmitter)="deleteTodoEvt($event)"(toggleDoneEmitter)="toggleDone($event)"></app-todo-item>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</ng-template>

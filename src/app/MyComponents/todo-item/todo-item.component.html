@@ -1,0 +1,11 @@
+<!-- <div class="card"> -->
+      <div class="card-body">
+        <h3 class="card-title" [ngClass]="{'strike':!todo.active}">{{todo.title}}</h3>
+        <p class="card-text" [ngClass]="{'strike':!todo.active}">{{todo.desc}}</p>
+        <p class="card-text">Added on: {{this.datePipe.transform(todo.addDate,"dd-MM-yyyy, h:mm a")}}</p>
+        <button class="card-link btn-danger" (click)="deleteTodo(todo)">Delete</button>
+          <input type="checkbox" class="card-link" id="exampleCheck{{i}}" (click)="toggleDone(todo)" [checked]="!todo.active">
+          <label class="form-check-label card-link" for="exampleCheck{{i}}">Done</label>
+
+      </div>
+<!-- </div> -->

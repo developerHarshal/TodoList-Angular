@@ -1,0 +1,20 @@
+<div class="container-fluid pt-4 pb-4" id="divForm" 
+[ngClass]="{ 'is-valid':(f.valid || f.untouched), 'is-invalid':(_title.invalid && _title.touched) || (_desc.invalid && _desc.touched)}">
+    <h3>Add A todo</h3>
+<form (ngSubmit)="f.form.valid && addTodo(f.form)" #f="ngForm" name="form">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" [(ngModel)]="title" name="_title" #_title="ngModel" class="form-control" id="_title" aria-describedby="emailHelp"
+            placeholder="Title For your To-do" required  >
+        <div *ngIf="(_title.touched && _title.invalid)" style="color:red">First Title is required</div>
+    </div>
+    <div class="form-group">
+        <label for="desc">Description</label>
+        <input type="text" [(ngModel)]="desc" name="_desc" class="form-control" id="_desc" #_desc="ngModel" placeholder="Description" required>
+       
+        <div *ngIf="(_desc.touched && _desc.invalid)" style="color:red">Description is required</div>
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary" [disabled]="!f.valid">Add Todo</button>
+    <button type="reset" class="btn btn-sm ml-5 btn-danger" (click)="resetAddTodoForm()">Reset</button>
+</form>
+</div>

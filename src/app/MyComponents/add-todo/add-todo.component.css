@@ -1,0 +1,12 @@
+#divForm{
+    width: 50%;
+    
+}
+
+.is-invalid{
+    border: 2px solid;
+    border-color: red;
+}
+.is-valid{
+    border: 2px solid;
+}
